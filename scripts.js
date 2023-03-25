@@ -13,6 +13,13 @@ function fetchData(inputRows, selectedModel) {
         return response.json();
     })
     .then((data) => {
+        // Supprimer le message d'erreur s'il existe
+        const errorMessage = document.getElementById("error-message");
+        
+        if (errorMessage) {
+          errorMessage.remove();
+        }
+
         const records = data.records;
         fieldsArray = records.map(record => record.fields);
 
@@ -81,13 +88,24 @@ function fetchData(inputRows, selectedModel) {
     })
     .catch((error) => {
         console.error("Erreur lors de la récupération des données:", error);
+      
         // Gérer l'affichage de l'erreur dans l'interface utilisateur
-        const errorMessage = document.createElement("div");
-        errorMessage.textContent = "Erreur lors de la récupération des données. Veuillez réessayer ultérieurement.";
-        errorMessage.style.color = "red";
-        const h1Element = document.querySelector("h1");
-        h1Element.insertAdjacentElement("afterend", errorMessage);
-    });        
+        let errorMessage = document.getElementById("error-message");
+      
+        if (errorMessage) {
+          // Mettre à jour le contenu du message d'erreur s'il existe déjà
+          errorMessage.textContent = "Erreur lors de la récupération des données. Veuillez réessayer ultérieurement.";
+        } else {
+          // Créer et afficher le message d'erreur s'il n'existe pas
+          errorMessage = document.createElement("div");
+          errorMessage.id = "error-message";
+          errorMessage.textContent = "Erreur lors de la récupération des données. Veuillez réessayer ultérieurement.";
+          errorMessage.style.color = "red";
+          const h1Element = document.querySelector("h1");
+          h1Element.insertAdjacentElement("afterend", errorMessage);
+        }
+      });
+              
 }  
 
 // Initialize chart with data
