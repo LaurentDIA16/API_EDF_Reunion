@@ -14,6 +14,15 @@
   .sidebar .form-group{
     padding-left: 10px;
   }
+
+  .submit-rows-btn {
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .submit-rows-btn:active {
+    background-color: #6b7280;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
   
   /* Style de la section principale */
   .main {
