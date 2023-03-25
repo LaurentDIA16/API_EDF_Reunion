@@ -8,5 +8,6 @@ Technologies utilisées:
     - tailwind
     - javascript
     - chartjs
+    - jQuery
 
 Le site n'est pas encore responsive, il est juste adapté à un écran d'ordinateur
